@@ -10,7 +10,7 @@
   
   <h1> Learn Here.. Lead Anywhere..!! </h1>
 <h1>the best learning institute </h1>
-<h1> learn here and lead everywhere</h1>
+
 
 </body>
 </html>
