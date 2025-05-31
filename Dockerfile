@@ -1,14 +1,13 @@
-# Use a lightweight OpenJDK base image
-FROM openjdk:17-jdk-slim
+# Use an official Tomcat base image
+FROM tomcat:9.0-jdk17
 
-# Set the working directory inside the container
-WORKDIR /app
+# Remove default apps (optional cleanup)
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy the JAR file into the container
-COPY target/myapp.jar app.jar
+# Copy your WAR file into the webapps directory
+COPY target/01-maven-web-app.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose port if your app listens on one (optional)
+# Expose port 8080
 EXPOSE 8080
 
-# Run the JAR file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Start Tomcat (inherited from base image CMD)
