@@ -16,14 +16,14 @@ jobs:
         distribution: 'adopt'
         java-version: '11'
     - name: Build with Maven
-      run: mvn install -f 01-maven-web-app/pom.xml
+      run: docker build -t project1
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       with:
         projectBaseDir: .
         args: >
           -Dsonar.organization=my-org
-          -Dsonar.projectKey=my-Java-web-app
+          -Dsonar.projectKey=sonar-test
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
